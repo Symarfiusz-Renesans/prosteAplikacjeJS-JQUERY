@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="styl/style.css">
+	<script src="js/jquery-3.6.1.js"></script>
+	<script type="text/javascript">
+		jQuery(function(){
+			jQuery('input').on('keydown keyup keypress', function(){
+				jQuery('b').eq(0).text(event.type);
+			})
+			jQuery('input').on('keydown keyup', function(){
+				jQuery('b').eq(1).text(event.which);
+			})
+			jQuery('h2').on('click dblclick mouseover mouseout', function(event) {
+				jQuery('b').eq(0).text(event.type);
+				const target = jQuery(event.target);
+				if (target.is('h2')) {
+					jQuery('b').eq(1).text(' ');
+				}
+			jQuery('input, h2').on('click', function(){
+				jQuery('b').eq(2).text(event.target.nodeName);
+			})
+			});
+		})
+	</script>
+</head>
+<body>
+
+	<div id="container">
+		<div id="page">
+			Uaktywnij pole i sprawdź, co się dzieje po naciśnięciu klawisza. Wypróbuj różne kombinacje.
+			<input type="text">
+			<h2>Najedź tutaj myszką</h2>
+			<p>Typ zdarzenia: <b></b></p>
+			<p>Numer znaku: <b></b></p>
+			<p>Zdarzenie zainicjowane przez: <b></b></p>
+		</div>
+	</div>
+	
+</body>
+</html>

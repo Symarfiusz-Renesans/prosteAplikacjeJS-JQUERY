@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="js/jquery-3.6.1.js"></script>
+	<link rel="stylesheet" href="styl/style.css">
+	<style>
+		body{
+			margin:0;
+		}
+        .kulka{
+            height:100px;
+            width: 100px;
+            border-radius: 50px;
+            left:0px;
+            position: absolute;
+        }
+        #ekran{
+        	width: 1000px;
+        	height: 500px;
+        	background-color: black;
+        	margin-bottom: 10px;
+        }
+        #pierwszy{
+        	background: red;
+            top: 0px;
+        }
+        #drugi{
+        	background: #00FF00;
+        	left: 150px;
+            top: 150px;
+        }
+        #trzeci{
+        	background: blue;
+
+
+            top: 300px;
+        }
+        
+    </style>
+</head>
+<body>
+
+	<div id="ekran">
+			<div id="pierwszy" class="kulka"></div>
+            <div id="drugi" class="kulka"></div>
+            <div id="trzeci" class="kulka"></div>
+		</div>
+
+	<div id="container">
+		
+		<div id="page">
+			Podaj liczbę kulek (max 3):
+			<input type="number" id="ileKulek" min="1" max="3" value=3><br>
+			<span>Podaj Kolor pierwszej:</span>
+			<input type="color" id="kolorPierwszej" value="#FF0000" onchange="zmienKolor(0)"><br>
+			<span>Podaj Kolor drugiej:</span>
+			<input type="color" id="kolorDrugiej" value="#00FF00" onchange="zmienKolor(1)"><br>
+			<span>Podaj Kolor trzeciej:</span>
+			<input type="color" id="kolorTrzeciej" value="#0000FF" onchange="zmienKolor(2)"><br>
+			<button id="start">Start</button>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+	jQuery(function(){
+		var dalej = false;
+
+		jQuery("#ileKulek").on("click change", function() {
+			const x = jQuery("#ileKulek").val();
+			
+			for (var i = 0; i < x; i++) {
+				jQuery('.kulka').eq(i).show();
+				jQuery('input').eq(i+1).show();
+				jQuery('span').eq(i).show();
+			};
+			for (let i = 2; i > x-1; i--) {
+				jQuery('.kulka').eq(i).hide();
+				jQuery('input').eq(i+1).hide();
+				jQuery('span').eq(i).hide();
+			};
+		});
+
+		$('#start').on('click', function(){
+            const div1=$('#pierwszy');
+            const div2=$('#drugi');
+            const div3=$('#trzeci');
+            let div1xy=[0,0,1,0];
+            let div2xy=[150,150,1,0];
+            let div3xy=[0,300,1,0];
+
+            for (let i = 0; i != 100000; i++){
+            	if(div1xy[0] == 900){
+            		div1xy[2] = 0;
+            	}
+            	if(div1xy[0] == 0) {
+            		div1xy[2] = 1;
+            	}
+            	if(div1xy[1] == 400){
+            		div1xy[3] = 1;
+            	}
+            	if(div1xy[1] == 0) {
+            		div1xy[3] = 0;
+            	}
+
+            	if(div2xy[0] == 900){
+            		div2xy[2] = 0;
+            	}
+            	if(div2xy[0] == 0) {
+            		div2xy[2] = 1;
+            	}
+            	if(div2xy[1] == 400){
+            		div2xy[3] = 1;
+            	}
+            	if(div2xy[1] == 0) {
+            		div2xy[3] = 0;
+            	}
+
+            	if(div3xy[0] == 900){
+            		div3xy[2] = 0;
+            	}
+            	if(div3xy[0] == 0) {
+            		div3xy[2] = 1;
+            	}
+            	if(div3xy[1] == 400){
+            		div3xy[3] = 1;
+            	}
+            	if(div3xy[1] == 0) {
+            		div3xy[3] = 0;
+            	}
+
+            	//Pierwsza Kulka
+            	if (div1xy[2] == 1 && div1xy[3] == 0) {
+            		div1.animate({'left':'+=2px',
+                            'top':'+=2px'},1);
+            		div1xy[0] += 2;
+            		div1xy[1] += 2;
+            	}
+            	if (div1xy[2] == 1 && div1xy[3] == 1) {
+            		div1.animate({'left':'+=2px',
+                            'top':'-=2px'},1);
+            		div1xy[0] += 2;
+            		div1xy[1] -= 2;
+            	}
+            	if (div1xy[2] == 0 && div1xy[3] == 1) {
+            		div1.animate({'left':'-=2px',
+                            'top':'-=2px'},1);
+            		div1xy[0] -= 2;
+            		div1xy[1] -= 2;
+            	}
+            	if (div1xy[2] == 0 && div1xy[3] == 0) {
+            		div1.animate({'left':'-=2px',
+                            'top':'+=2px'},1);
+            		div1xy[0] -= 2;
+            		div1xy[1] += 2;
+            	}
+
+            	//Druga Kulka
+            	if (div2xy[2] == 1 && div2xy[3] == 0) {
+            		div2.animate({'left':'+=1px',
+                            'top':'+=1px'},1);
+            		div2xy[0] += 1;
+            		div2xy[1] += 1;
+            	}
+            	if (div2xy[2] == 1 && div2xy[3] == 1) {
+            		div2.animate({'left':'+=1px',
+                            'top':'-=1px'},1);
+            		div2xy[0] += 1;
+            		div2xy[1] -= 1;
+            	}
+            	if (div2xy[2] == 0 && div2xy[3] == 1) {
+            		div2.animate({'left':'-=1px',
+                            'top':'-=1px'},1);
+            		div2xy[0] -= 1;
+            		div2xy[1] -= 1;
+            	}
+            	if (div2xy[2] == 0 && div2xy[3] == 0) {
+            		div2.animate({'left':'-=1px',
+                            'top':'+=1px'},1);
+            		div2xy[0] -= 1;
+            		div2xy[1] += 1;
+            	}
+
+            	//Trzecia Kulka
+            	if (div3xy[2] == 1 && div3xy[3] == 0) {
+            		div3.animate({'left':'+=1px',
+                            'top':'+=2px'},1);
+            		div3xy[0] += 1;
+            		div3xy[1] += 2;
+            	}
+            	if (div3xy[2] == 1 && div3xy[3] == 1) {
+            		div3.animate({'left':'+=1px',
+                            'top':'-=2px'},1);
+            		div3xy[0] += 1;
+            		div3xy[1] -= 2;
+            	}
+            	if (div3xy[2] == 0 && div3xy[3] == 1) {
+            		div3.animate({'left':'-=1px',
+                            'top':'-=2px'},1);
+            		div3xy[0] -= 1;
+            		div3xy[1] -= 2;
+            	}
+            	if (div3xy[2] == 0 && div3xy[3] == 0) {
+            		div3.animate({'left':'-=1px',
+                            'top':'+=2px'},1);
+            		div3xy[0] -= 1;
+            		div3xy[1] += 2;
+            	}            	
+            }
+        });
+        jQuery('#stop').on('click', function(event) {
+        	dalej = true;
+        });
+		$('#reset').on('click', function() {
+			const div1=$('#pierwszy');
+               const div2=$('#drugi');
+               const div3=$('#trzeci');
+               //if(div1x<500){}
+               div1.animate({'left':'0px',
+                            'top':'0px'},0);
+               div2.animate({'left':'0px',
+                            'top':'150px'},0);
+               div3.animate({'left':'0px',
+                            'top':'300px'},0);
+		});
+			
+
+	});
+
+		jQuery("#stop").on('click', function() {
+			dalej = false;
+		});
+
+	function zmienKolor(ktory){
+		if (ktory == 0) {
+			document.getElementById('pierwszy').style.background = document.getElementById('kolorPierwszej').value;
+		} else if (ktory == 1){
+			document.getElementById('drugi').style.background = document.getElementById('kolorDrugiej').value;
+		} else {
+			document.getElementById('trzeci').style.background = document.getElementById('kolorTrzeciej').value;
+		}
+	}
+
+</script>
+</html>

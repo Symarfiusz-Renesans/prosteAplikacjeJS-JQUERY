@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="styl/style.css">
+	<style>
+		.prostokat{
+			border: 1px solid black;
+			width:  200px;
+			height: 150px;
+			background: green;
+			margin:  0 20px;
+			float: left;
+		}
+	</style>
+	<script src="js/jquery-3.6.1.js"></script>
+	<script type="text/javascript">
+		jQuery(function(){
+			jQuery('#pokaz').on('click', function() {
+				jQuery('img').show(1000);
+			})
+			jQuery('#ukryj').on('click', function() {
+				jQuery('img').hide(1000);
+			})
+			jQuery('#przel').on('click', function() {
+				jQuery('img').toggle();
+			})
+			jQuery('#zanik').on('click', function() {
+				jQuery('img').fadeOut(1000);
+			})
+			jQuery('#pojaw').on('click', function() {
+				jQuery('img').fadeIn(1000);
+			})
+			jQuery('#wysun1').on('click', function(){
+				jQuery('#pierwszy').toggle().slideDown(1000);
+			})
+			jQuery('#wysun2').on('click', function(){
+				jQuery('#drugi').toggle().slideUp(1000);
+			})
+		})
+	</script>
+</head>
+<body>
+
+	<div id="container">
+		<div id="page">
+			<button id="pokaz">Pokaż</button>
+			<button id="ukryj">Ukryj</button>
+			<button id="przel">Przełącz</button>
+			<button id="zanik">Zaniknij</button>
+			<button id="pojaw">Pojaw</button>
+			<img src="zdjecia/JQuery-Logo.svg.png" alt="jquery" style="width: 500px;">
+		</div>
+		<div id="slajder" style="height: 250px">
+			<button id="wysun1">Wysuń w dół</button>
+			<button id="wysun2"> Wysuń w górę</button>
+			<button id="wysun3">Przełącz</button>
+
+			<div id="pierwszy" class="prostokat"></div>
+			<div id="drugi" class="prostokat"></div>
+			<div id="trzeci" class="prostokat"></div>
+			<div style="clear: both;"></div>
+
+
+		</div>
+	</div>
+	
+</body>
+</html>

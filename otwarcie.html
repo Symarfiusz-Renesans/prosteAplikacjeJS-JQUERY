@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="js/jquery-3.6.1.js"></script>
+	<link rel="stylesheet" href="styl/style.css">
+	<script type="text/javascript">
+		jQuery(function(){
+			jQuery('.otwarcie li').eq(new Date().getDay()).addClass('dzis');
+		})
+	</script>
+
+	<style type="text/css">
+		.dzis{
+			color: darkorange;
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="page">
+			<div class="godziny">
+				<h2>Jesteśmy otwarci</h2>
+				<ul class="otwarcie">
+					<li>Niedziela
+						<span class="hours">Zamknięte</span>
+					</li>
+					<li>Poniedziałek
+						<span class="hours">8:00 - 16:00</span></li>
+					<li>Wtorek
+						<span class="hours">8:00 - 16:00</span></li>
+					<li>Środa
+						<span class="hours">8:00 - 16:00</span></li>
+					<li>Czwartek
+						<span class="hours">8:00 - 16:00</span></li>
+					<li>Piątek
+						<span class="hours">8:00 - 16:00</span></li>
+					<li>Sobota
+						<span class="hours">8:00 - 16:00</span></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

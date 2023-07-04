@@ -1,0 +1,40 @@
+h2{
+	font-family: arial;
+}
+
+#container{
+	width: 700px;
+	margin: 0 auto;
+}
+
+#page{
+	font-size: 150%;
+	text-align: center;
+	padding: 20px;
+	border: 1px solid black;
+	background-color: azure;
+}
+
+ul{
+	margin: 20px;
+	list-style-image: url('punktor.png');
+	list-style-position: inside;
+}
+
+li{
+	padding:  5px;
+	margin-bottom: 2px;
+}
+
+.link{
+	background-color: red;
+}
+
+.inny_link{
+	background-color: black;
+	color: white;
+}
+
+.kolejny_link{
+	background-color: blue;
+}

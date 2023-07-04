@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery - zdarzenia</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="styl/style.css">
+	<style>
+		span
+		{
+			display: none;
+		}
+	</style>
+	<script src="js/jquery-3.6.1.js"></script>
+	<script type="text/javascript">
+		$(
+			function()
+			{
+				let i=0;
+				jQuery('#page').mouseup(function() {
+					i++;
+					jQuery('#licznik').text('Najechano na diva '+i+' razy');
+				})
+				$('input').on('focus', function()
+				{
+					$('span').eq(0).css('display','inline').fadeOut(2000);
+				})
+				$('input').on('blur', function()
+				{
+					$('span').eq(1).css('display','inline').fadeOut(2000);
+				})
+				$('input').on('change', function()
+				{
+					$('span').eq(2).css('display','inline').fadeOut(2000);
+				})
+			}
+		)
+	</script>
+</head>
+<body>
+	<div id="container">
+		<div id="page">
+			Wybierz mnie, wypisz coś i wciśnij enter, a nastepnie opuść mnie:
+			<input type="text"><br>
+			<span>Pole zostało aktywowane</span>
+			<span>Pole zotało opuszczone</span>
+			<span>Nastąpiła zmiana</span><br>
+			<b id="licznik"></b>
+		</div>
+	</div>
+</body>
+</html>
